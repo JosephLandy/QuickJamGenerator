@@ -4,6 +4,7 @@ import time
 
 app = Flask(__name__)
 api = Api(app)
+global startTime
 startTime = time.time()
 
 tracks = [{"trackID": 0, "status": "off", "volume": 100},
@@ -32,10 +33,11 @@ class Track(Resource):
 
 class Sync(Resource):
     def get(self):
-        if time.time() > (startTime - 210):
+        global startTime
+        if time.time() > startTime - 210:
+            playTime = startTime % 210
             startTime = time.time()
-        return startTime
-
+        return playTime
 
 api.add_resource(Status, '/status/')
 api.add_resource(Track, '/track/')
