@@ -48,7 +48,7 @@ class App extends Component {
           {/*</a>*/}
         {/*</header>*/}
 
-        <Track data={tracks.arpeg}/>
+        <Track name="arpegg"/>
 
       </div>
     );
