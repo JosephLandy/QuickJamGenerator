@@ -26,9 +26,18 @@ class Track extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
         <div>
 
         </div>
+=======
+        <span>
+          {this.props.name}
+        <div className="slidecontainer">
+          <input type="range" min="1" max="100" value="50" className="slider" id="myRange" />   
+        </div>
+        </span>
+>>>>>>> 00782727627bc4216141b1212d1e653943e830d0
     );
   }
 
