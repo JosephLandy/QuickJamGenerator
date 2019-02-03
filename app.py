@@ -42,10 +42,7 @@ class Track(Resource):
 class Sync(Resource):
     def get(self):
         global startTime
-        if time.time() > startTime - 210:
-            playTime = startTime % 210          #Keeps track of local time for a 3.5 minute track, to keep all clients synced
-            startTime = time.time()
-        return int(playTime)
+        return int((time.time() - startTime) % 210)
 
 api.add_resource(Status, '/status/')
 api.add_resource(Track, '/track/')
