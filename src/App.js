@@ -33,10 +33,13 @@ class App extends Component {
     return (
       <div className="App">
 
-        <div>
-          <Track name="arpeg" trackID={0} />
-          <Track name="bass" trackID={0} />
-          <Track name="HiHat" trackID={0} />
+        <div className="container">
+          <Track id="piano" name="Piano" trackID={0}/>
+          <Track id="kick" name="Kick" trackID={1}/>
+          <Track id="hihat" name="HiHat" trackID={2} />
+          <Track id="bass" name="bass" trackID={3} />
+          <Track id="arpegg" name="arpegg" trackID={4} />
+          <Track id="pads" name="pads" trackID={5} />
         </div>
 
       </div>

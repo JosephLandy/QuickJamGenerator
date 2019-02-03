@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-
+import sound from './webaudio';
 import InputRange  from 'react-input-range';
-
 import arpeggURL from './music/arpegg.wav';
 import bassURL from './music/bass.wav';
 import HiHatURL from './music/HiHat.wav';
@@ -46,7 +45,7 @@ class Track extends Component {
 
   render() {
     return (
-        <div className="track-container">
+        <div id={this.props.id} className="track-container">
           {this.props.name}
           <button onClick={this.onMuteClick}>mute</button>
           <div className="boxed" />

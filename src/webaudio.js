@@ -7,12 +7,12 @@ class sound{
     }
     init(){
         //instantiating the web audio api object
-        this.track = this.context.createMediaElementSource(self.audioElem);
+        this.track = this.context.createMediaElementSource(this.audioElem);
         //creates 
-        this.gainNode = this.context.createGain();
+        var gainNode = this.context.createGain();
         this.track.connect(gainNode);
-        this.track.connect(self.context.destination);
-        this.audioElem.currentTime = currentTime;
+        this.track.connect(this.context.destination);
+        this.audioElem.currentTime = this.currentTime;
         this.audioElem.play();
     }
     stop(){//mutes the track
@@ -25,6 +25,8 @@ class sound{
     volumeAdjust(val){
         this.gainNode.gain.value = val;
     }
+}
+export default sound;
 /*
 }
 window.onload = function() {
