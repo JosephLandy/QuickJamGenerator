@@ -1,18 +1,18 @@
 class sound{
     constructor(context, audioElement, currentTime){
         //context - audio context, audioElement - audio tag, currentTime - 
-    this.context = context;
-    this.audioElem = audioElement;
-    this.currentTime = currentTime;
-      this.track = this.context.createMediaElementSource(this.audioElem);
+        this.context = context;
+        this.audioElem = audioElement;
+        this.currentTime = currentTime;
+        this.track = this.context.createMediaElementSource(this.audioElem);
       // creates
-      this.gainNode = this.context.createGain();
-      this.track.connect(this.gainNode);
-      this.track.connect(this.context.destination);
-      this.audioElem.currentTime = this.currentTime;
-      this.audioElem.play();
+        this.gainNode = this.context.createGain();
+        this.track.connect(this.gainNode);
+        this.gainNode.connect(this.context.destination);
+        this.audioElem.currentTime = this.currentTime;
+        this.audioElem.play();
 
-      this.mute = this.mute.bind(this);
+        // this.mute = this.mute.bind(this);
     }
     // init() {
     //     //instantiating the web audio api object
@@ -27,17 +27,19 @@ class sound{
   //https://developer.mozilla.org/en-US/docs/Web/API/GainNode
     mute() {//mutes the track
         console.log('muted in the sound class');
-        this.gainNode.gain.setValueAtTime(-3.4, this.context.currentTime);
-    }
-    unmute() {
-        this.gainNode.gain.value = 1;
+        this.gainNode.gain.setValueAtTime(0, this.context.currentTime);
+
+        this.printgain();
     }
 
     printgain() {
-
+        console.log(this.gainNode)
     }
-    
-    volumeAdjust(val){
+
+    unmute() {
+        this.gainNode.gain.value = 1;
+    }
+    volumeAdjust(val) {
         this.gainNode.gain.value = val;
     }
 }

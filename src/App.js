@@ -17,10 +17,6 @@ import sound from "./webaudio";
 const backendhost = 'http://127.0.0.1:5000/';
 
 
-// const tracks = {
-//   arpeg: {URL: arpeggURL, name: 'arpegg', muted: false},
-// };
-
 const tracksinfo = [
   {URL: arpeggURL, name: "pegg", mute: false, volume: 50},
   {URL: bassURL, name: "bass", mute: false, volume: 50},
@@ -55,22 +51,6 @@ class App extends Component {
 
   }
 
-  onComponentDidMount() {
-    // transform state to add audio objects.
-    // this.setState({tracks: tracksinfo.map((elem, index) => {
-    //     return {
-    //       URL: elem.URL,
-    //       name: elem.name,
-    //       mute: elem.mute,
-    //       volume: elem.volume,
-    //       TrackID: index,
-    //       audio: new
-    //
-    //     }
-    //
-    //   })});
-
-  }
 
   startHandler() {
     var context = new AudioContext();
@@ -92,12 +72,10 @@ class App extends Component {
       this.setState({tracks: tracksTemp});
 
     } else {
-
       let tracksTemp = [...this.state.tracks];
       tracksTemp[index] = {...tracksTemp[index], mute: true};
       this.state.sounds[index].mute();
       this.setState({tracks: tracksTemp});
-
     }
 
     console.log("Mute handler called.");
