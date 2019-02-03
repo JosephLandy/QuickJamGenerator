@@ -50,25 +50,26 @@ class Track extends Component {
 
   tick() {
     this.props.audio.analyser.getByteTimeDomainData(this.dataArray);
-    console.log(this.dataArray);
     this.setState({ audioData: this.dataArray });
     this.rafId = requestAnimationFrame(this.tick);
   }
 
   sliderChanged(event) {
     this.setState({volume: event.target.value});
+    this.props.sliderHandler(this.props.trackID, event.target.value);
     console.log("slider changed");
   }
 
   // only want the server updated when the slider is released.
   onSliderDown(event) {
   }
+
   onSliderUp(event) {
   }
 
   onMuteClick(event) {
     event.preventDefault();
-    this.props.muteHandler(this.props.trackID)
+    this.props.muteHandler(this.props.trackID);
   }
 
   render() {
