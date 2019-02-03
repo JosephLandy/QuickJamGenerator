@@ -23,6 +23,7 @@ code {
                         "footer footer footer";
   width: 100%;
   grid-template-columns: 5% auto 5%;
+  grid-row-gap: 1%;
   grid-template-rows: 150px 150px 150px 150px 150px 150px 150px;
 }
 /******************************************************************************************
@@ -66,6 +67,8 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: #b3b3b3 10px;
+  border-radius: 5px;
 }
 /******************************************************************************************
 *************************************Track Control Box*************************************

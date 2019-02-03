@@ -14,12 +14,12 @@ startTime = time.time()
           {"trackID": 4, "status": "off", "volume": 100}]
 """
 tracks = [
-        {'name': "arpegg", 'mute': False, 'volume': 50},
-        {'name': "bass", 'mute': False, 'volume': 50},
-        {'name': "HiHat", 'mute': False, 'volume': 50},
-        {'name': "kick", 'mute': False, 'volume': 50},
-        {'name': "pads", 'mute': False, 'volume': 50},
         {'name': "Piano", 'mute': False, 'volume': 50},
+        {'name': "kick", 'mute': False, 'volume': 50},
+        {'name': "HiHat", 'mute': False, 'volume': 50},
+        {'name': "bass", 'mute': False, 'volume': 50},
+        {'name': "arpegg", 'mute': False, 'volume': 50},
+        {'name': "pads", 'mute': False, 'volume': 50},
     ]
 
 class Status(Resource):
