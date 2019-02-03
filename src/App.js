@@ -37,12 +37,12 @@ class App extends Component {
     this.state = {
       started: false,
       tracks: [
-        {URL: arpeggURL, name: "pegg", mute: false, volume: 50},
-        {URL: bassURL, name: "bass", mute: false, volume: 50},
-        {URL: HiHatURL, name: "HiHat", mute: false, volume: 50},
-        {URL: kickURL, name: "kick", mute: false, volume: 50},
-        {URL: padsURL, name: "pads", mute: false, volume: 50},
         {URL: pianoURL, name: "Piano", mute: false, volume: 50},
+        {URL: kickURL, name: "kick", mute: false, volume: 50},
+        {URL: HiHatURL, name: "HiHat", mute: false, volume: 50},
+        {URL: bassURL, name: "bass", mute: false, volume: 50},
+        {URL: arpeggURL, name: "arpegg", mute: false, volume: 50},
+        {URL: padsURL, name: "pads", mute: false, volume: 50},
       ],
 
     };
@@ -78,13 +78,13 @@ class App extends Component {
       this.state.sounds[index].mute();
       this.setState({tracks: tracksTemp});
     }
-    this.ajaxHandler()
+    this.ajaxHandler(index)
     console.log("Mute handler called.");
   }
 
-  ajaxHandler(){
+  ajaxHandler(index){
     var myInit = { method: 'POST',
-               body:JSON.stringify(this.state.tracks)};
+               body:JSON.stringify(this.state.tracks[index])};
                //http://10.217.248.253:5000/track
     const request = new Request('http://10.217.248.253:5000/track', myInit);
     fetch(request).then(function(response) {
