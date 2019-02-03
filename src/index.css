@@ -22,7 +22,7 @@ code {
                         ". pads ."
                         "footer footer footer";
   width: 100%;
-  grid-template-columns: 5% auto 20%;
+  grid-template-columns: 5% auto 5%;
   grid-template-rows: 150px 150px 150px 150px 150px 150px 150px;
 }
 /******************************************************************************************
