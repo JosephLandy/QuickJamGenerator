@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-
+import sound from './webaudio';
 import InputRange  from 'react-input-range';
-
 import arpeggURL from './music/arpegg.wav';
 import bassURL from './music/bass.wav';
 import HiHatURL from './music/HiHat.wav';
@@ -43,19 +42,23 @@ class Track extends Component {
   }
 
   onMuteClick(event) {
+    event.preventDefault();
+    this.props.muteHandler(this.props.trackID)
 
   }
 
 
   render() {
     return (
-        <div className="track-container">
-          {this.props.name}
-          <button onClick={this.onMuteClick}>mute</button>
-          <div className="boxed" />
-          <div className="slidecontainer">
-            <input type="range" min={1} max={100} value={this.state.volume} onChange={this.sliderChanged} />
+        <div id={this.props.id} className="track-container">
+          <div className="control-box">
+            <p>{this.props.name}</p>
+            <button onClick={this.onMuteClick}>mute</button>
+            <div className="slidecontainer">
+              <input type="range" min={0} max={200} value={this.state.volume} onChange={this.sliderChanged} />
+            </div>
           </div>
+          <div className="boxed"></div>
         </div>
     );
   }
