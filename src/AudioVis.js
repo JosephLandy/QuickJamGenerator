@@ -27,7 +27,7 @@ class AudioVis extends Component {
     let x = 0;
     const sliceWidth = (width * 1.0) / audioData.length;
     context.lineWidth = 2;
-    context.strokeStyle = '#000000';
+    context.strokeStyle = 'blue';
     context.clearRect(0, 0, width, height);
 
     context.beginPath();

@@ -3,6 +3,7 @@ class sound{
         //context - audio context, audioElement - audio tag, currentTime - 
         this.context = context;
         this.audioElem = audioElement;
+        this.audioElem.loop = true;
         this.currentTime = currentTime;
         this.track = this.context.createMediaElementSource(this.audioElem);
       // creates
