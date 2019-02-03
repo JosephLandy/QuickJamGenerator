@@ -45,7 +45,7 @@ class Sync(Resource):
         return int((time.time() - startTime) % 210)
 
 api.add_resource(Status, '/status/')
-api.add_resource(Track, '/track/')
+api.add_resource(Track, '/track/<int:trackID>')
 api.add_resource(Sync, '/sync/')
 
 if __name__ == '__main__':
