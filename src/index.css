@@ -20,6 +20,13 @@ button{
   font-size: 16px;
   box-shadow: 1px 1px 1px #c2c2c2;
 }
+#playButton{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /******************************************************************************************
 *************************************Container class***************************************
