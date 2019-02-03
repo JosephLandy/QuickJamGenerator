@@ -86,7 +86,7 @@ class App extends Component {
     var myInit = { method: 'POST',
                body:JSON.stringify(this.state.tracks[index])};
                //http://10.217.248.253:5000/track
-    const request = new Request('http://10.217.248.253:5000/track', myInit);
+    const request = new Request('http://10.217.188.27:5000/track', myInit);
     fetch(request).then(function(response) {
       console.log(response);
     });
