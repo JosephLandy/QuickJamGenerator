@@ -78,18 +78,39 @@ class App extends Component {
       this.state.sounds[index].mute();
       this.setState({tracks: tracksTemp});
     }
-    this.ajaxHandler(index)
+    this.ajaxHandler(index,"update")
     console.log("Mute handler called.");
   }
 
-  ajaxHandler(index){
-    var myInit = { method: 'POST',
-               body:JSON.stringify(this.state.tracks[index])};
-               //http://10.217.248.253:5000/track
-    const request = new Request('http://10.217.188.27:5000/track', myInit);
-    fetch(request).then(function(response) {
-      
-    });
+  ajaxHandler(index,type){
+    if(type == "update"){
+      //UPDATES THE STATE OF TRACK ID
+      var myInit = { method: 'POST',
+                body:JSON.stringify(this.state.tracks[index])};
+                //http://10.217.248.253:5000/track
+      const request = new Request('http://10.217.188.27:5000/track', myInit);
+      fetch(request).then(function(response) {
+        
+      });
+    }
+    else if(type == "sync"){
+      //GETS THE TIME
+                //http://10.217.248.253:5000/track
+      const request = new Request('http://10.217.188.27:5000/sync', {Method:'GET', mode: 'cors', cache: 'default' });
+      fetch(request).then(function(response) {
+        console.log(response);
+      });
+    }
+    else if( type == "get"){
+      //USED TO GET STATE OF SPECIFIC TRACK ID
+      //http://10.217.248.253:5000/track
+      const request = new Request('http://10.217.188.27:5000/track/{0}'.format(index), {Method:'GET', mode: 'cors', cache: 'default' });
+      fetch(request).then(function(response) {
+        console.log(response);
+      });
+
+    }
+
   }
 
   render() {
@@ -110,7 +131,7 @@ class App extends Component {
 
     } else {
       return (
-          <button onClick={this.startHandler}>
+          <button id="playButton" onClick={this.startHandler}>
             play
           </button>
       );
