@@ -119,12 +119,12 @@ class App extends Component {
           <div className="App">
             <div className="container">
               <div class="wordart blues"><span class="text"><p id="spinner">Quick Jam Generator</p></span></div>
-              <Track id="piano" name="Piano" trackID={0} muteHandler={this.muteHandler}/>
-              <Track id="kick" name="Kick" trackID={1} muteHandler={this.muteHandler}/>
-              <Track id="hihat" name="HiHat" trackID={2} muteHandler={this.muteHandler}/>
-              <Track id="bass" name="Bass" trackID={3} muteHandler={this.muteHandler}/>
-              <Track id="arpegg" name="Arpegg" trackID={4} muteHandler={this.muteHandler}/>
-              <Track id="pads" name="Pads" trackID={5} muteHandler={this.muteHandler}/>
+              <Track id="piano" name="Piano" trackID={0} muteHandler={this.muteHandler} audio={this.state.sounds[0]} />
+              <Track id="kick" name="Kick" trackID={1} muteHandler={this.muteHandler} audio={this.state.sounds[1]} />
+              <Track id="hihat" name="HiHat" trackID={2} muteHandler={this.muteHandler} audio={this.state.sounds[2]} />
+              <Track id="bass" name="Bass" trackID={3} muteHandler={this.muteHandler} audio={this.state.sounds[3]} />
+              <Track id="arpegg" name="Arpegg" trackID={4} muteHandler={this.muteHandler} audio={this.state.sounds[4]} />
+              <Track id="pads" name="Pads" trackID={5} muteHandler={this.muteHandler} audio={this.state.sounds[5]} />
             </div>
           </div>
       );
