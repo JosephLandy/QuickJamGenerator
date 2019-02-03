@@ -19,12 +19,12 @@ const backendhost = 'http://127.0.0.1:5000/';
 
 
 const tracksinfo = [
-  {URL: arpeggURL, name: "pegg", mute: false, volume: 50},
-  {URL: bassURL, name: "bass", mute: false, volume: 50},
-  {URL: HiHatURL, name: "HiHat", mute: false, volume: 50},
-  {URL: kickURL, name: "kick", mute: false, volume: 50},
-  {URL: padsURL, name: "pads", mute: false, volume: 50},
-  {URL: pianoURL, name: "Piano", mute: false, volume: 50},
+  {URL: arpeggURL, name: "pegg", mute: false, volume: 70},
+  {URL: bassURL, name: "bass", mute: false, volume: 70},
+  {URL: HiHatURL, name: "HiHat", mute: false, volume: 70},
+  {URL: kickURL, name: "kick", mute: false, volume: 70},
+  {URL: padsURL, name: "pads", mute: false, volume: 70},
+  {URL: pianoURL, name: "Piano", mute: false, volume: 70},
 ]
 
 class App extends Component {
@@ -37,12 +37,12 @@ class App extends Component {
     this.state = {
       started: false,
       tracks: [
-        {URL: pianoURL, name: "Piano", mute: false, volume: 50},
-        {URL: kickURL, name: "kick", mute: false, volume: 50},
-        {URL: HiHatURL, name: "HiHat", mute: false, volume: 50},
-        {URL: bassURL, name: "bass", mute: false, volume: 50},
-        {URL: arpeggURL, name: "arpegg", mute: false, volume: 50},
-        {URL: padsURL, name: "pads", mute: false, volume: 50},
+        {URL: pianoURL, name: "Piano", mute: false, volume: 70},
+        {URL: kickURL, name: "kick", mute: false, volume: 70},
+        {URL: HiHatURL, name: "HiHat", mute: false, volume: 70},
+        {URL: bassURL, name: "bass", mute: false, volume: 70},
+        {URL: arpeggURL, name: "arpegg", mute: false, volume: 70},
+        {URL: padsURL, name: "pads", mute: false, volume: 70},
       ],
 
     };
