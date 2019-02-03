@@ -13,8 +13,9 @@ class AudioVis extends Component {
     this.draw();
   }
 
+
   render() {
-    return <canvas width="1200" height="130" ref={this.canvas}/>;
+    return <canvas style={{width: '100%', height: '100%'}} ref={this.canvas}/>;
   }
 
   draw() {
