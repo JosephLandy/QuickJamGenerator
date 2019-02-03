@@ -7,36 +7,85 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/******************************************************************************************
+*************************************Container class***************************************
+*******************************************************************************************/
 .container{
   display: grid;
-  grid-template-areas: "header header header header"
-                        ". piano piano ."
-                        ". kick kick ."
-                        ". hihat hihat ."
-                        ". bass bass ."
-                        ". arpegg arpegg ."
-                        "footer footer footer footer";
+  /*Order of how html is styled*/
+  grid-template-areas: "header header header"
+                        ". piano ."
+                        ". kick ."
+                        ". hihat ."
+                        ". bass ."
+                        ". arpegg ."
+                        ". pads ."
+                        "footer footer footer";
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-    
+  grid-template-columns: 5% auto 20%;
+  grid-template-rows: 150px 150px 150px 150px 150px 150px 150px;
 }
-{
-  
+/******************************************************************************************
+*************************************Grid Order Placement**********************************
+*******************************************************************************************/
+#piano{
+  grid-area: piano;
 }
-.boxed {
+#kick{
+  grid-area: kick;
+}
+#hihat{
+  grid-area: hihat;
+}
+#bass{
+  grid-area: bass;
+}
+#arpegg{
+  grid-area: arpegg;
+}
+#pads{
+  grid-area: pads;
+}
+/*.boxed {
   border: 1px solid black ;
   width: 250px;
   height: 25px;
   display: inline-block;
   float:center;
+}*/
+/******************************************************************************************
+*************************************Track styling*****************************************
+*******************************************************************************************/
+.track-container{
+  border: 1px solid rgb(170, 170, 170);
+  width: 100%;
+  padding-left: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+/******************************************************************************************
+*************************************Track Control Box*************************************
+*******************************************************************************************/
+.control-box{
+  width:20%;
+  height:95%;
+  border-right: 1px solid rgb(202, 202, 202);
+  
+}
+/******************************************************************************************
+*************************************Track Control Box*************************************
+*******************************************************************************************/
 
+.boxed {
+  border: 1px solid black ;
+  width: 75%;
+  height: 95%;
+  display: inline-block;
+
+}
 .slidecontainer{
     width: 15%
-    
 }
 
 .slider{
@@ -71,4 +120,72 @@ code {
   height: 25px; /* Slider handle height */
   background: #4CAF50; /* Green background */
   cursor: pointer; /* Cursor on hover */
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slidecontainer{
+    width: 15%
+    
+}
+
+.slider{
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #00000; /* Grey background */
+    outline: #ffffff; 
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 12.5px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  cursor: pointer; /* Cursor on hover */
+  float:left;
 }

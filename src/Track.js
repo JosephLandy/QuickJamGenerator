@@ -46,12 +46,14 @@ class Track extends Component {
   render() {
     return (
         <div id={this.props.id} className="track-container">
-          {this.props.name}
-          <button onClick={this.onMuteClick}>mute</button>
-          <div className="boxed" />
-          <div className="slidecontainer">
-            <input type="range" min={1} max={100} value={this.state.volume} onChange={this.sliderChanged} />
+          <div className="control-box">
+            <p>{this.props.name}</p>
+            <button onClick={this.onMuteClick}>mute</button>
+            <div className="slidecontainer">
+              <input type="range" min={0} max={200} value={this.state.volume} onChange={this.sliderChanged} />
+            </div>
           </div>
+          <div className="boxed"></div>
         </div>
     );
   }
