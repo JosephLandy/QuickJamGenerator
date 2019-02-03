@@ -17,6 +17,7 @@ import sound from "./webaudio";
 const backendhost = 'http://127.0.0.1:5000/';
 
 
+
 const tracksinfo = [
   {URL: arpeggURL, name: "pegg", mute: false, volume: 50},
   {URL: bassURL, name: "bass", mute: false, volume: 50},
@@ -65,7 +66,7 @@ class App extends Component {
 
   muteHandler(index) {
     if (this.state.tracks[index].mute) {
-
+      
       let tracksTemp = [...this.state.tracks];
       tracksTemp[index] = {...tracksTemp[index], mute: false};
       this.state.sounds[index].unmute();
@@ -77,16 +78,26 @@ class App extends Component {
       this.state.sounds[index].mute();
       this.setState({tracks: tracksTemp});
     }
-
+    this.ajaxHandler()
     console.log("Mute handler called.");
   }
 
+  ajaxHandler(){
+    var myInit = { method: 'POST',
+               body:JSON.stringify(this.state.tracks)};
+               //http://10.217.248.253:5000/track
+    const request = new Request('http://10.217.248.253:5000/track', myInit);
+    fetch(request).then(function(response) {
+      console.log(response);
+    });
+  }
 
   render() {
     if (this.state.started) {
       return (
           <div className="App">
             <div className="container">
+              <div class="wordart blues"><span class="text"><p id="spinner">Quick Jam Generator</p></span></div>
               <Track id="piano" name="Piano" trackID={0} muteHandler={this.muteHandler}/>
               <Track id="kick" name="Kick" trackID={1} muteHandler={this.muteHandler}/>
               <Track id="hihat" name="HiHat" trackID={2} muteHandler={this.muteHandler}/>
