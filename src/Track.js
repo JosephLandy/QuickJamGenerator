@@ -16,30 +16,47 @@ class Track extends Component {
     super(props);
 
     this.state = {
-      value: 50,
-    }
+      volume: 50,
+    };
+
+    this.sliderChanged = this.sliderChanged.bind(this);
+    this.onSliderDown = this.onSliderDown.bind(this);
+    this.onMuteClick = this.onMuteClick.bind(this);
   }
 
-  sliderChanged(value) {
-    
+  sliderChanged(event) {
+    this.setState({volume: event.target.value});
+    console.log("slider changed");
   }
+
+
+  // only want the server updated when the slider is released.
+  onSliderDown(event) {
+
+  }
+
+  onSliderUp(event) {
+
+  }
+
+  onMuteClick(event) {
+
+  }
+
 
   render() {
     return (
-<<<<<<< HEAD
-        <div>
-
-        </div>
-=======
-        <span>
+        <div className="track-container">
           {this.props.name}
-        <div className="slidecontainer">
-          <input type="range" min="1" max="100" value="50" className="slider" id="myRange" />   
+          <button onClick={this.onMuteClick}>mute</button>
+          <div className="boxed" />
+          <div className="slidecontainer">
+            <input type="range" min={1} max={100} value={this.state.volume} onChange={this.sliderChanged} />
+          </div>
         </div>
-        </span>
->>>>>>> 00782727627bc4216141b1212d1e653943e830d0
     );
   }
+
 
 }
 

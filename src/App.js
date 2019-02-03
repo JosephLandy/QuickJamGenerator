@@ -13,6 +13,7 @@ import Track from './Track';
 
 
 // const host = "http://localhost:8000/";
+const backendhost = 'http://127.0.0.1:5000/';
 
 
 const tracks = {
@@ -24,7 +25,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.url = "http://localhost:8000/batida__2_-_130_bpm.wav";
     // this.sample = new Audio(this.url);
     // this.arpegg = new Audio(arpeggURL);
   }
@@ -32,23 +32,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/*<header className="App-header">*/}
-          {/*/!*<img src={logo} className="App-logo" alt="logo" />*!/*/}
-          {/*/!*<p>*!/*/}
-            {/*/!*Edit <code>src/App.js</code> and save to reload.*!/*/}
-          {/*/!*</p>*!/*/}
-          {/*/!*<img src="http://0.0.0.0:8000/getRequest.png" />*!/*/}
-          {/*<a*/}
-            {/*className="App-link"*/}
-            {/*href="https://reactjs.org"*/}
-            {/*target="_blank"*/}
-            {/*rel="noopener noreferrer"*/}
-          {/*>*/}
-            {/*Learn React*/}
-          {/*</a>*/}
-        {/*</header>*/}
 
-        <Track name="arpegg"/>
+        <div>
+          <Track name="arpeg" trackID={0} />
+          <Track name="bass" trackID={0} />
+          <Track name="HiHat" trackID={0} />
+        </div>
 
       </div>
     );
