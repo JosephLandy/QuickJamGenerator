@@ -15,6 +15,8 @@ class Track extends Component {
   constructor(props) {
     super(props);
 
+    this.audioTracks = []
+
     this.state = {
       volume: 50,
     };
@@ -27,6 +29,7 @@ class Track extends Component {
   sliderChanged(event) {
     this.setState({volume: event.target.value});
     console.log("slider changed");
+
   }
 
 

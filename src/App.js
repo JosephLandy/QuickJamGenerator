@@ -16,7 +16,16 @@ import Track from './Track';
 const backendhost = 'http://127.0.0.1:5000/';
 
 
-const tracks = {
+const tracks = [
+  {URL: arpeggURL, name: 'arpegg', muted: false, volume:50},
+  {URL: bassURL, name: 'bass', muted: false, volume:50},
+  {URL: HiHatURL, name: 'HiHat', muted: false},
+  {URL: kickURL, name: 'kick', muted: false},
+  {URL: padsURL, name: 'pads', muted: false},
+  {URL: pianoURL, name: 'piano', muted: false},
+
+
+]
   arpeg: {URL: arpeggURL, name: 'arpegg', muted: false},
 };
 
@@ -24,19 +33,19 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
-    // this.sample = new Audio(this.url);
-    // this.arpegg = new Audio(arpeggURL);
   }
+
+
+
 
   render() {
     return (
       <div className="App">
 
-        <div>
-          <Track name="arpeg" trackID={0} />
-          <Track name="bass" trackID={0} />
-          <Track name="HiHat" trackID={0} />
+        <div >
+          <Track name="arpeg" trackID={0} audio={null}/>
+          <Track name="bass" trackID={0} audio={null}/>
+          <Track name="HiHat" trackID={0} audio={null}/>
         </div>
 
       </div>
