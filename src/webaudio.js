@@ -4,22 +4,29 @@ class sound{
         this.context = context;
         this.audioElem = audioElement;
         this.currentTime = currentTime;
+      this.track = this.context.createMediaElementSource(this.audioElem);
+      //creates
+      let gainNode = this.context.createGain();
+      this.track.connect(gainNode);
+      this.track.connect(this.context.destination);
+      this.audioElem.currentTime = this.currentTime;
+      this.audioElem.play();
     }
-    init(){
-        //instantiating the web audio api object
-        this.track = this.context.createMediaElementSource(this.audioElem);
-        //creates 
-        var gainNode = this.context.createGain();
-        this.track.connect(gainNode);
-        this.track.connect(this.context.destination);
-        this.audioElem.currentTime = this.currentTime;
-        this.audioElem.play();
-    }
-    stop(){//mutes the track
+    // init() {
+    //     //instantiating the web audio api object
+    //     this.track = this.context.createMediaElementSource(this.audioElem);
+    //     //creates
+    //     let gainNode = this.context.createGain();
+    //     this.track.connect(gainNode);
+    //     this.track.connect(this.context.destination);
+    //     this.audioElem.currentTime = this.currentTime;
+    //     this.audioElem.play();
+    // }
+    mute(){//mutes the track
         this.gainNode.gain.value = 0;
 
     }
-    playTrack(){
+    unmute(){
         this.gainNode.gain.value = 1;
     }
     volumeAdjust(val){
