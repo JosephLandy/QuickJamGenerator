@@ -88,7 +88,7 @@ class App extends Component {
                //http://10.217.248.253:5000/track
     const request = new Request('http://10.217.188.27:5000/track', myInit);
     fetch(request).then(function(response) {
-      console.log(response);
+      
     });
   }
 
@@ -101,9 +101,9 @@ class App extends Component {
               <Track id="piano" name="Piano" trackID={0} muteHandler={this.muteHandler}/>
               <Track id="kick" name="Kick" trackID={1} muteHandler={this.muteHandler}/>
               <Track id="hihat" name="HiHat" trackID={2} muteHandler={this.muteHandler}/>
-              <Track id="bass" name="bass" trackID={3} muteHandler={this.muteHandler}/>
-              <Track id="arpegg" name="arpegg" trackID={4} muteHandler={this.muteHandler}/>
-              <Track id="pads" name="pads" trackID={5} muteHandler={this.muteHandler}/>
+              <Track id="bass" name="Bass" trackID={3} muteHandler={this.muteHandler}/>
+              <Track id="arpegg" name="Arpegg" trackID={4} muteHandler={this.muteHandler}/>
+              <Track id="pads" name="Pads" trackID={5} muteHandler={this.muteHandler}/>
             </div>
           </div>
       );

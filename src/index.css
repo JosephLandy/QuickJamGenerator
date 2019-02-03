@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgb(226, 226, 226);
 }
 
 code {
@@ -61,21 +62,24 @@ code {
 *************************************Track styling*****************************************
 *******************************************************************************************/
 .track-container{
+  background-color: rgb(243, 242, 242);
   border: 1px solid rgb(170, 170, 170);
   width: 100%;
   padding-left: 1%;
-  display: flex;
-  justify-content: space-between;
+  display: inline-flex;
+  justify-content: start;
   align-items: center;
-  box-shadow: #b3b3b3 10px;
+  box-shadow: #707070 15px;
   border-radius: 5px;
+  text-align: left;
 }
 /******************************************************************************************
 *************************************Track Control Box*************************************
 *******************************************************************************************/
 .control-box{
   width:20%;
-  height:95%;
+  margin:10px;
+  height:98%;
   border-right: 1px solid rgb(202, 202, 202);
   
 }
@@ -84,10 +88,11 @@ code {
 *******************************************************************************************/
 
 .boxed {
-  border: 1px solid black ;
-  width: 75%;
+  border: 1px solid rgb(173, 173, 173) ;
+  width: 78%;
   height: 95%;
   display: inline-block;
+  border-radius: 3px;
 
 }
 .slidecontainer{
