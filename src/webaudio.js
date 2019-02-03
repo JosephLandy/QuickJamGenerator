@@ -9,7 +9,16 @@ class sound{
         this.gainNode = this.context.createGain();
         this.track.connect(this.gainNode);
         this.gainNode.connect(this.context.destination);
+
         this.audioElem.currentTime = this.currentTime;
+
+        this.analyser = this.context.createAnalyser();
+
+        this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+
+        // this.track.connect(this.analyser);
+
+        this.gainNode.connect(this.analyser);
         this.audioElem.play();
 
         // this.mute = this.mute.bind(this);
