@@ -39,6 +39,8 @@ class Track extends Component {
   }
 
   onMuteClick(event) {
+    event.preventDefault();
+    this.props.muteHandler(this.props.trackID)
 
   }
 

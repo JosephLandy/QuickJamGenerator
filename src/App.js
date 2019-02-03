@@ -74,26 +74,33 @@ class App extends Component {
 
   startHandler() {
     var context = new AudioContext();
+
     let sounds = this.state.tracks.map((track) => {
-      new sound(context, new Audio(track.URL), 0);
+      return new sound(context, new Audio(track.URL), 0);
     });
+
+    console.log(sounds);
     this.setState({started: true, sounds});
   }
 
   muteHandler(index) {
     if (this.state.tracks[index].mute) {
+
       let tracksTemp = [...this.state.tracks];
       tracksTemp[index] = {...tracksTemp[index], mute: false};
       this.state.sounds[index].unmute();
       this.setState({tracks: tracksTemp});
+
     } else {
+
       let tracksTemp = [...this.state.tracks];
       tracksTemp[index] = {...tracksTemp[index], mute: true};
       this.state.sounds[index].mute();
       this.setState({tracks: tracksTemp});
 
-
     }
+
+    console.log("Mute handler called.");
   }
 
 
