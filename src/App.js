@@ -1,50 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
-import arpeggURL from './music/arpegg.wav';
-import bassURL from './music/bass.wav';
-import HiHatURL from './music/HiHat.wav';
-import kickURL from './music/kick.wav';
-import padsURL from './music/pads.wav';
-import pianoURL from './music/piano.wav';
+import arpeggURL from './music/arpegg.mp3';
+import bassURL from './music/bass.mp3';
+import HiHatURL from './music/hihat.mp3';
+import kickURL from './music/kick.mp3';
+import padsURL from './music/pads.mp3';
+import pianoURL from './music/piano.mp3';
 
 import Track from './Track';
 import sound from "./webaudio";
 
 
-// const host = "http://localhost:8000/";
 const backendhost = 'http://127.0.0.1:5000/';
 
-
-
-const tracksinfo = [
-  {URL: arpeggURL, name: "pegg", mute: false, volume: 70},
-  {URL: bassURL, name: "bass", mute: false, volume: 70},
-  {URL: HiHatURL, name: "HiHat", mute: false, volume: 70},
-  {URL: kickURL, name: "kick", mute: false, volume: 70},
-  {URL: padsURL, name: "pads", mute: false, volume: 70},
-  {URL: pianoURL, name: "Piano", mute: false, volume: 70},
-]
 
 class App extends Component {
 
   constructor(props) {
     super(props);
 
-    // this.sample = new Audio(this.url);
-    // this.arpegg = new Audio(arpeggURL);
     this.state = {
       started: false,
       tracks: [
-        {URL: pianoURL, name: "Piano", mute: false, volume: 70},
-        {URL: kickURL, name: "kick", mute: false, volume: 70},
-        {URL: HiHatURL, name: "HiHat", mute: false, volume: 70},
-        {URL: bassURL, name: "bass", mute: false, volume: 70},
-        {URL: arpeggURL, name: "arpegg", mute: false, volume: 70},
-        {URL: padsURL, name: "pads", mute: false, volume: 70},
+        {URL: pianoURL, id: 'piano', name: "Piano", mute: false, volume: 70},
+        {URL: kickURL, id: "kick", name: "kick", mute: false, volume: 70},
+        {URL: HiHatURL, id: "hihat", name: "HiHat", mute: false, volume: 70},
+        {URL: bassURL, id: "bass", name: "bass", mute: false, volume: 70},
+        {URL: arpeggURL, id: "arpegg", name: "arpegg", mute: false, volume: 70},
+        {URL: padsURL, id: "pads", name: "pads", mute: false, volume: 70},
       ],
-
     };
 
     this.startHandler = this.startHandler.bind(this);
@@ -70,10 +56,13 @@ class App extends Component {
   }
 
   muteHandler(index) {
+
     if (this.state.tracks[index].mute) {
       
       let tracksTemp = [...this.state.tracks];
+
       tracksTemp[index] = {...tracksTemp[index], mute: false};
+
       this.state.sounds[index].unmute();
       this.setState({tracks: tracksTemp});
 
@@ -83,10 +72,13 @@ class App extends Component {
       this.state.sounds[index].mute();
       this.setState({tracks: tracksTemp});
     }
-    this.ajaxHandler(index,"update")
+
+    this.ajaxHandler(index,"update");
     console.log("Mute handler called.");
+
   }
 
+  // this looks a lot like a Redux reducer. Maybe we can use redux, and share stuff with this.
   ajaxHandler(index,type){
     if(type == "update"){
       //UPDATES THE STATE OF TRACK ID
@@ -113,23 +105,30 @@ class App extends Component {
       fetch(request).then(function(response) {
         console.log(response);
       });
-
     }
-
   }
+
 
   render() {
     if (this.state.started) {
       return (
           <div className="App">
             <div className="container">
-              <div class="wordart blues"><span class="text"><p id="spinner">Quick Jam Generator</p></span></div>
-              <Track id="piano" name="Piano" trackID={0} muteHandler={this.muteHandler} audio={this.state.sounds[0]} sliderHandler={this.sliderHandler} />
-              <Track id="kick" name="Kick" trackID={1} muteHandler={this.muteHandler} audio={this.state.sounds[1]} sliderHandler={this.sliderHandler}/>
-              <Track id="hihat" name="HiHat" trackID={2} muteHandler={this.muteHandler} audio={this.state.sounds[2]} sliderHandler={this.sliderHandler}/>
-              <Track id="bass" name="Bass" trackID={3} muteHandler={this.muteHandler} audio={this.state.sounds[3]} sliderHandler={this.sliderHandler}/>
-              <Track id="arpegg" name="Arpegg" trackID={4} muteHandler={this.muteHandler} audio={this.state.sounds[4]} sliderHandler={this.sliderHandler}/>
-              <Track id="pads" name="Pads" trackID={5} muteHandler={this.muteHandler} audio={this.state.sounds[5]} sliderHandler={this.sliderHandler}/>
+              <div class="wordart blues">
+                <span class="text">
+                  <p id="spinner">Quick Jam Generator</p>
+                </span>
+              </div>
+              { // this is very bad and ugly.
+                [0, 1, 2, 3, 4, 5].map(i => (<Track
+                    id={this.state.tracks[i].id}
+                    name={this.state.tracks[i].name}
+                    trackID={i}
+                    muteHandler={this.muteHandler}
+                    audio={this.state.sounds[i]}
+                    sliderHandler={this.sliderHandler}
+                />))
+              }
             </div>
           </div>
       );
@@ -141,7 +140,6 @@ class App extends Component {
           </button>
       );
     }
-
   }
 
 }
