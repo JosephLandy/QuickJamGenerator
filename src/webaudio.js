@@ -6,14 +6,14 @@ class sound {
     this.context = context;
     this.audioElem = audioElement;
     this.audioElem.loop = true;
-    this.currentTime = currentTime;
+    // this.currentTime = currentTime;
     this.track = this.context.createMediaElementSource(this.audioElem);
 
     this.gainNode = this.context.createGain();
     this.track.connect(this.gainNode);
     this.gainNode.connect(this.context.destination);
 
-    this.audioElem.currentTime = this.currentTime;
+    this.audioElem.currentTime = currentTime;
 
     this.analyser = this.context.createAnalyser();
 
@@ -33,11 +33,11 @@ class sound {
     this.gainNode.gain.value = 1;
   }
 
-  setMute(muted) {
+  toggleMute(muted) {
     if (muted) {
-      this.gainNode.gain.setValueAtTime(0, this.context.currentTime);
+      this.unmute();
     } else {
-      this.gainNode.gain.value = 1;
+      this.mute();
     }
   }
 
@@ -45,9 +45,53 @@ class sound {
     this.gainNode.gain.value = val;
   }
 
-  // updateTimeDomainData() {
-  //   this.analyser.getByteTimeDomainData(this.dataArray);
-  // }
+  // ok, so this doesn't really work.
+  computeTrackDisplay(nsamples = 600) {
+    // because the audio asset might be streaming,
+    // we want to be able to use this with time not 0, and then reset to that time.
+    // let playTime = this.audioElem.currentTime;
+    // I should use track, not audioElem.
+    let playTime = this.audioElem.currentTime;
+    let interval = this.audioElem.duration / nsamples;
+    // console.log(this.audioElem.duration); // returns nan, meaning it can't determine duration.
+    // Maybe hasn't fully loaded yet when this is called.
+    // console.log(this.track.)
+    let samples = [];
+    this.analyser.fftSize = 32; // minimum fft size. frequencyBinCount is 1/2 this.
+    let bins = new Uint8Array(this.analyser.frequencyBinCount);
+    for (let i = 0; i < 300; i++) {
+      let t = i * interval;
+      // this.audioElem.currentTime = t;
+      this.analyser.getByteFrequencyData(bins);
+      // find max value.
+      let max = 0;
+      for (const val of bins) {
+        if (val > max) {
+          max = val;
+        }
+      }
+      samples.push(max);
+    }
+    this.audioElem.currentTime = playTime;
+    console.log(samples);
+    return samples;
+  }
+
+  // displays the seekable range
+  printSeekable() {
+    const ranges = this.audioElem.seekable;
+    console.log(ranges);
+    for (let i = 0; i < ranges.length; i++) {
+      console.log(`${ranges.start(i)}, ${ranges.end(i)}`)
+    }
+  }
+
+  changeCurrentTime() {
+    console.log('changing time');
+    this.audioElem.currentTime = 100;
+    console.log(this.audioElem.currentTime);
+  }
+
 
 }
 
