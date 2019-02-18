@@ -9,14 +9,14 @@ import kickURL from './music/kick.mp3';
 import padsURL from './music/pads.mp3';
 import pianoURL from './music/piano.mp3';
 
-import Track from './Track';
+import Track from './TrackOriginal';
 import sound from "./webaudio";
 
 
 const backendhost = 'http://127.0.0.1:5000/';
 
 
-class App extends Component {
+export default class AppOriginal extends Component {
 
   constructor(props) {
     super(props);
@@ -119,15 +119,17 @@ class App extends Component {
                   <p id="spinner">Quick Jam Generator</p>
                 </span>
               </div>
-              { // this is very bad and ugly.
-                [0, 1, 2, 3, 4, 5].map(i => (<Track
-                    id={this.state.tracks[i].id}
-                    name={this.state.tracks[i].name}
-                    trackID={i}
-                    muteHandler={this.muteHandler}
-                    audio={this.state.sounds[i]}
-                    sliderHandler={this.sliderHandler}
-                />))
+              {
+                this.state.tracks.map((track, i) => (
+                    <Track
+                        id={track.id}
+                        name={track.name}
+                        trackID={i}
+                        audio={this.state.sounds[i]}
+                        muteHandler={this.muteHandler}
+                        sliderHandler={this.sliderHandler}
+                    />
+                ))
               }
             </div>
           </div>
@@ -143,6 +145,3 @@ class App extends Component {
   }
 
 }
-
-
-export default App;

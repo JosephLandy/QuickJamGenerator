@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class AudioVis extends Component {
 
-
   constructor(props) {
     super(props);
     this.canvas = React.createRef();
@@ -11,7 +10,6 @@ class AudioVis extends Component {
   componentDidUpdate() {
     this.draw();
   }
-
 
   render() {
     return <canvas style={{width: '100%', height: '100%'}} ref={this.canvas}/>;
@@ -23,9 +21,7 @@ class AudioVis extends Component {
     const canvas = this.canvas.current;
     const height = canvas.height;
     const width = canvas.width;
-
     const context = canvas.getContext('2d');
-
     const sliceWidth = (width * 1.0) / audioData.length;
 
     context.lineWidth = 2;
@@ -42,10 +38,7 @@ class AudioVis extends Component {
     }
     context.lineTo(x, height / 2);
     context.stroke();
-
   }
-
-
 
 }
 

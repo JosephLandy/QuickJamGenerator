@@ -9,6 +9,7 @@ body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }*/
+
 button{
   background-color: rgb(236, 236, 236);
   border: none;
@@ -28,6 +29,7 @@ button{
   transform: translate(-50%, -50%);
 }
 
+/*This is a problem because it doesn't support adding new tracks.*/
 /******************************************************************************************
 *************************************Container class***************************************
 *******************************************************************************************/
@@ -124,7 +126,7 @@ button{
 
 .slider{
     -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
+    -moz-appearance: none;
     width: 100%; /* Full-width */
     height: 25px; /* Specified height */
     background: #00000; /* Grey background */

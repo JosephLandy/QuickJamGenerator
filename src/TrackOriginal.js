@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import AudioVis from './AudioVis';
 
-class Track extends Component {
+export default class TrackOriginal extends Component {
 
   constructor(props) {
 
@@ -14,7 +14,6 @@ class Track extends Component {
     };
 
     this.audiobox = React.createRef();
-
     this.tick = this.tick.bind(this);
     this.sliderChanged = this.sliderChanged.bind(this);
     this.onMuteClick = this.onMuteClick.bind(this);
@@ -73,5 +72,3 @@ class Track extends Component {
   }
 
 }
-
-export default Track;

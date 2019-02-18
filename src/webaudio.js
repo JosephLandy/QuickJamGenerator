@@ -1,12 +1,11 @@
 
-class sound {
+export default class sound {
 
   constructor(context, audioElement, currentTime) {
-    //context - audio context, audioElement - audio tag, currentTime -
+    //context - audio context, audioElement - audio tag, currentTime - current time
     this.context = context;
     this.audioElem = audioElement;
     this.audioElem.loop = true;
-    // this.currentTime = currentTime;
     this.track = this.context.createMediaElementSource(this.audioElem);
 
     this.gainNode = this.context.createGain();
@@ -47,23 +46,17 @@ class sound {
 
   // ok, so this doesn't really work.
   computeTrackDisplay(nsamples = 600) {
-    // because the audio asset might be streaming,
-    // we want to be able to use this with time not 0, and then reset to that time.
-    // let playTime = this.audioElem.currentTime;
     // I should use track, not audioElem.
     let playTime = this.audioElem.currentTime;
     let interval = this.audioElem.duration / nsamples;
     // console.log(this.audioElem.duration); // returns nan, meaning it can't determine duration.
     // Maybe hasn't fully loaded yet when this is called.
-    // console.log(this.track.)
     let samples = [];
     this.analyser.fftSize = 32; // minimum fft size. frequencyBinCount is 1/2 this.
     let bins = new Uint8Array(this.analyser.frequencyBinCount);
     for (let i = 0; i < 300; i++) {
       let t = i * interval;
-      // this.audioElem.currentTime = t;
       this.analyser.getByteFrequencyData(bins);
-      // find max value.
       let max = 0;
       for (const val of bins) {
         if (val > max) {
@@ -94,5 +87,3 @@ class sound {
 
 
 }
-
-export default sound;
