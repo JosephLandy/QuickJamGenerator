@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AudioVis extends Component {
+class AudioVisOriginal extends Component {
 
   constructor(props) {
     super(props);
@@ -42,4 +42,4 @@ class AudioVis extends Component {
 
 }
 
-export default AudioVis;
+export default AudioVisOriginal;

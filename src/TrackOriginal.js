@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import AudioVis from './AudioVis';
+import AudioVisOriginal from './AudioVisOriginal';
 
 export default class TrackOriginal extends Component {
 
@@ -64,7 +64,7 @@ export default class TrackOriginal extends Component {
             </div>
           </div>
           <div className="boxed" ref={this.audiobox}>
-            <AudioVis audioData={this.state.audioData}/>
+            <AudioVisOriginal audioData={this.state.audioData}/>
           </div>
 
         </div>

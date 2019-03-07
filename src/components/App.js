@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import '../App.css';
+import './App.css';
 
 import arpeggURL from '../music/arpegg.mp3';
 import bassURL from '../music/bass.mp3';
@@ -72,17 +72,20 @@ export default class App extends Component {
                 <p id="spinner">Quick Jam Generator</p>
               </span>
             </div>
-            {
-              this.state.tracks.map((track, i) => (
-                  <Track
-                      id={track.id}
-                      name={track.name}
-                      trackID={i}
-                      audiosrc={track.URL}
-                      key={i}
-                  />
-              ))
-            }
+            <div className={'track-list'}>
+              {
+                this.state.tracks.map((track, i) => (
+                    <Track
+                        id={track.id}
+                        name={track.name}
+                        trackID={i}
+                        audiosrc={track.URL}
+                        key={i}
+                    />
+                ))
+              }
+            </div>
+
           </div>
         </div>
     );

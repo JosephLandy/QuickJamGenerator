@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import './App.css';
-
+// import './components/App.css';
+import './index.css'
 import arpeggURL from './music/arpegg.mp3';
 import bassURL from './music/bass.mp3';
 import HiHatURL from './music/hihat.mp3';

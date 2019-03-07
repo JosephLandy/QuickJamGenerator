@@ -12,7 +12,10 @@ export const audioctx = new AudioContext();
 // then: *(audioElem -> individual effect nodes) *-> newNode -> global effect node -> destination
 
 export class WebAudioTrack {
-
+  /**
+   * @param {HTMLAudioElement} audioElem
+   * @param {number} initialTime
+   */
   constructor(audioElem, initialTime) {
     this.audioElem = audioElem;
     this.track = audioctx.createMediaElementSource(this.audioElem);
@@ -29,6 +32,9 @@ export class WebAudioTrack {
   }
 
   //https://developer.mozilla.org/en-US/docs/Web/API/GainNode
+  /**
+   *
+   */
   mute() {
     this.gainNode.gain.setValueAtTime(0, this.audioElem.currentTime);
   }
